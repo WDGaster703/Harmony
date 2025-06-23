@@ -93,20 +93,6 @@ uint8_t runMode(void) {
             }
         }
         if (isCross == 1) {  // 记忆模式
-            /* // 效果不好
-            if (quarter_turn == QT_L && (CTRTstate[0][0] == HIGH || CTRTstate[1][0] == HIGH)) {
-              isCross = 0;
-              quarter_turn = NOPE;
-              return TURN_LEFT_HIGH;
-            } else if (quarter_turn == QT_R && (CTRTstate[6][0] == HIGH || CTRTstate[5][0] == HIGH)) {
-              isCross = 0;
-              quarter_turn = NOPE;
-              return TURN_RIGHT_HIGH;
-            } else if ((quarter_turn == NOPE) && (!isAllLow())) {
-              isCross = 0;
-              return SLOW_ON;
-            }
-            */
             if (!isAllLow()) {  // 再次检测到黑线，则退出记忆模式
                 isCross = 0;
             }
@@ -159,8 +145,8 @@ void motorControl(void) {
             TARGET_V_RIGHT = 0;
             break;
         case STRAIGHT_ON:  // 全速直行
-            TARGET_V_LEFT = base_V * 0.7;
-            TARGET_V_RIGHT =- base_V * 0.7;
+            TARGET_V_LEFT = base_V * 0.8;
+            TARGET_V_RIGHT =- base_V * 0.8;
             break;
         case SLOW_ON:  // 减速直行
             TARGET_V_LEFT = base_V * 0.5;
